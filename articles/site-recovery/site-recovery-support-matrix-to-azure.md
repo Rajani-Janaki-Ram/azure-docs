@@ -73,7 +73,7 @@ The below table summarizes replicated Operating System support in various deploy
 >**Storage support for Linux versions**
 >File system (EXT3, ETX4, ReiserFS, XFS)
 >Multipath software-Device Mapper (multipath))
->Volume manager: (LVM2)
+Dynamic disk (VHD)| Yes | Yes | Yes>Volume manager: (LVM2)
 >Physical servers with HP CCISS controller storage are **not** supported.
 >The ReiserFS filesystem is supported only on SUSE Linux Enterprise Server 11 SP3.
 
@@ -123,8 +123,12 @@ The below tables summarize storage configuration support in various deployment s
 --- | --- | --- | ---
 NFS | Yes for VMware<br/><br/> No for physical servers | NA | NA
 SMB 3.0 | NA | Yes | Yes
-SAN (ISCSI) | Yes | Yes | Yes
+SAN (iSCSI, FC) | Yes | Yes | Yes
+Dynamic disk| Yes | Yes | Yes
 Multi-path (MPIO)<br></br>Tested with: Microsoft DSM,EMC PowerPath 5.7 SP4, EMC PowerPath DSM for CLARiiON | Yes for VMware<br/><br/> | Yes | Yes
+
+>[!Note!]
+>In case of dynamic disk support: OS disk has to be basic. Essentially, the root and boot should be on the same volume, and the volume shouldnt span across multiple disks. The data disk can be dynamic.
 
 ### Guest/ Physical server storage configuration
 
@@ -137,7 +141,7 @@ EFI/UEFI| No | Yes | Yes
 Shared cluster disk | Yes for VMware<br/><br/> NA for physical servers | No | No
 Encrypted disk | No | No | No
 NFS | No | NA | NA
-SMB 3.0 | No | No | No
+SMB 3.0 | NA | No | No
 RDM | Yes<br/><br/> NA for physical servers | NA | NA
 Disk > 1 TB | No | No | No
 Volume with striped disk > 1 TB<br/><br/> LVM-Logical Volume Management | Yes | Yes | Yes
